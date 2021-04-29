@@ -35,6 +35,20 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: reserve
-  - action: utter_reserve
+  - action: utter_reserveQ
+  - intent: thanks
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: Booking a Non-AC room at a disallowed time
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: reserve
+  - action: utter_reserveQ
+  - intent: find_itineraries
+  - action: utter_did_that_help
+  - action: action_find_itineraries
   - intent: thanks
   - action: utter_goodbye

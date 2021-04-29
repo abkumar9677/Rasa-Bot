@@ -10,6 +10,8 @@ intents:
   - reserve
   - thanks
   - find_itineraries
+  - time
+  - open
 
 responses:
   utter_greet:
@@ -26,11 +28,21 @@ responses:
   - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Bye, see you soon"
+  - text: "Bye, come back later."
 
   utter_reserveQ:
   - text: "When would you like to book a reservation? (We are only open from 7pm to 10pm)"
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  utter_unclear:
+  - text: "Sorry, I'm unable to understand. Please try out something else."
+
+
+actions:
+  - utter_greet
+  - utter_cheer_up
+  - utter_did_that_help
+  - utter_goodbye
+  - utter_unclear
+  - utter_reserveQ
+  - utter_happy
+  - action_find_itineraries

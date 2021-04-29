@@ -115,3 +115,12 @@ nlu:
     - get me my bookings list
     - show me my bookings
     
+- intent: time
+  examples: |
+    - what is your timing
+    - timing of restaurant
+
+- intent: open
+  examples: |
+    - what days are you open
+    - opening days
