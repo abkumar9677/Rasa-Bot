@@ -113,3 +113,7 @@
   - utter_confirmation
 * thank
   - utter_thank
+
+## Story path 17
+* schedule_time2
+  - action_time

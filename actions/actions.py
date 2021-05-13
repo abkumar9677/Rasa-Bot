@@ -38,7 +38,7 @@ from datetime import datetime
 
 #         return []
 
-class ActionTime(Action):
+class ActionTimeClause(Action):
     
     def name(self) -> Text:
         return "action_time"
@@ -47,12 +47,21 @@ class ActionTime(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
+        now = datetime.now()
+        hrs= int(now.strftime("%I"))
+        min= int(now.strftime("%M"))+00
+        offset=str(tracker.get_slot("time2"))
         
-        offset=str(tracker.get_slot("time"))
-       
-        print("Sure, I have scheduled a booking at "+offset)
-        dispatcher.utter_message(text="Sure, I have scheduled a booking at "+offset)
-
+        if("half" in offset) and (hrs>7) and (hrs<10):
+            offset=int(30)
+            final_min=(min+offset)%60
+            final_time=str(hrs%12)+":"+str(final_min)
+            print("offset:",final_time)
+            dispatcher.utter_message(response="utter_confirmation",number_of_seats=tracker.get_slot("number_of_seats"),seat_type=tracker.get_slot("seat_type"),time=final_time)
+        else:
+            print("Failed")
+            dispatcher.utter_message(text="We are not open at that time. We are only open from 7pm to 10pm")
+            dispatcher.utter_message(response="utter_time_book")
         return []
 
 class ActionOpen(Action):

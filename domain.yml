@@ -18,12 +18,14 @@ intents:
   - open_days
   - special
   - thank
+  - schedule_time2
 
 entities:
   - number_of_seats
   - seat_type
   - number_of_hours
   - time
+  - time2
 
 slots:
   number_of_seats:
@@ -36,6 +38,8 @@ slots:
   number_of_hours:
     type: text
   time:
+    type: text
+  time2:
     type: text
 
 actions:
@@ -55,7 +59,7 @@ actions:
 
 responses:
   utter_greet:
-  - text: "Hey! I'm there for hotel service"
+  - text: "Hey! I'm there for your booking service"
 
   utter_enquiry_seat_no:
   - text: "How many seats would you like to reserve?"
@@ -70,7 +74,7 @@ responses:
   utter_time_book:
     - text: "When would you like to book a reservation? (We are only open from 7pm to 10pm)"
   utter_confirmation:
-    - text: "You have reserved {number_of_seats} seat(s) in our {seat_type} section for {time}. Thanks!"
+    - text: "You have reserved {number_of_seats} seat(s) in our {seat_type} section for {time} (pm). Thanks!"
   utter_done:
   - text: "Booked Successfully!"
   utter_bye:

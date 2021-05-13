@@ -17,6 +17,11 @@ rules:
   - intent: schedule_time
   - action: utter_confirmation
 
+- rule: text time 
+  steps:
+  - intent: schedule_time2
+  - action: action_time
+
 - rule: Thank you
   steps:
   - intent: thank 
