@@ -5,6 +5,29 @@ rules:
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
-  - action: utter_goodbye
+  - action: utter_bye
 
+- rule: Always ask for room type after seat_no
+  steps:
+  - intent: seat_no
+  - action: utter_enquiry_seat_type
 
+- rule: Ask for confirmation 
+  steps:
+  - intent: schedule_time
+  - action: utter_confirmation
+
+- rule: Thank you
+  steps:
+  - intent: thank 
+  - action: utter_thank
+
+- rule: booking path
+  steps:
+  - intent: book+seat_no
+  - action: utter_enquiry_seat_type
+  
+- rule: booking path2
+  steps:
+  - intent: booking
+  - action: utter_enquiry_seat_no

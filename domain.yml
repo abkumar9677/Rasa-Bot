@@ -5,44 +5,78 @@ intents:
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
-  - reserve
-  - thanks
-  - find_itineraries
+  - booking
+  - book+seat_no
+  - seat_no
+  - choose
+  # - time
+  - book+seat_no+time
+  - checkout
+  - cancelreservation
+  - restauranttimings
+  - schedule_time
+  - open_days
+  - special
+  - thank
+
+entities:
+  - number_of_seats
+  - seat_type
+  - number_of_hours
   - time
-  - open
+
+slots:
+  number_of_seats:
+    type: text
+  seat_type:
+    type: categorical
+    values:
+    - AC
+    - Non-AC
+  number_of_hours:
+    type: text
+  time:
+    type: text
+
+actions:
+- utter_greet
+- utter_enquiry_seat_no
+- utter_enquiry_seat_type
+- utter_confirmation
+- utter_done
+- action_time
+- action_open_time
+- action_days
+- action_cancel
+- action_special
+- utter_bye
+- utter_time_book
+- utter_thank
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hey! I'm there for hotel service"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_enquiry_seat_no:
+  - text: "How many seats would you like to reserve?"
 
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye, come back later."
-
-  utter_reserveQ:
-  - text: "When would you like to book a reservation? (We are only open from 7pm to 10pm)"
-
-  utter_unclear:
-  - text: "Sorry, I'm unable to understand. Please try out something else."
-
-
-actions:
-  - utter_greet
-  - utter_cheer_up
-  - utter_did_that_help
-  - utter_goodbye
-  - utter_unclear
-  - utter_reserveQ
-  - utter_happy
-  - action_find_itineraries
+  utter_enquiry_seat_type:
+  - text: "Which section would you like to book"
+    buttons:
+    - title: "AC"
+      payload: '/choose{{"seat_type": "AC"}}'
+    - title: "Non-AC"
+      payload: '/choose{{"seat_type": "Non-AC"}}'
+  utter_time_book:
+    - text: "When would you like to book a reservation? (We are only open from 7pm to 10pm)"
+  utter_confirmation:
+    - text: "You have reserved {number_of_seats} seat(s) in our {seat_type} section for {time}. Thanks!"
+  utter_done:
+  - text: "Booked Successfully!"
+  utter_bye:
+  - text: "Good bye! Have a great day ahead!"
+  utter_thank:
+  - text: "You're welcome, have a great day ahead."
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
