@@ -95,11 +95,11 @@
 
 ## intent:schedule_time
 - [7](time)
-- [8](time)pm
-- [9](time)PM
-- [7:30](time)pm
-- [7:30](time)PM
-- [7:30](time) PM
+- [8pm](time)
+- [9PM](time)
+- [7:30pm](time)
+- [7:30PM](time)
+- [7:30 PM](time) 
 
 ## intent:schedule_time2
 - [in half an hour](time2)
