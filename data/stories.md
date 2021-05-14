@@ -54,6 +54,8 @@
 * greet
   - utter_greet
 * book+seat_no+time
+  - utter_enquiry_seat_type
+* choose{"seat_type": "Non-AC"}
   - utter_confirmation
 * thank
   - utter_thank
@@ -100,6 +102,8 @@
 
 ## Story path 15
 * book+seat_no+time
+  - utter_enquiry_seat_type
+* choose{"seat_type": "Non-AC"}
   - utter_confirmation
 * thank
   - utter_thank
