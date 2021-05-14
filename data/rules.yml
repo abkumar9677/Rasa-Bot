@@ -37,7 +37,7 @@ rules:
   - intent: booking
   - action: utter_enquiry_seat_no
 
-- rule: booking path
+- rule: booking +seat +time path
   steps:
   - intent: book+seat_no+time
   - action: utter_enquiry_seat_type
